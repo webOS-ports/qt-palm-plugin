@@ -4,6 +4,9 @@ CONFIG += plugin $$(WEBOS_CONFIG)
 
 QTDIR_build:DESTDIR = $$QT_BUILD_TREE/plugins/platforms
 
+CONFIG += link_pkgconfig
+PKGCONFIG += glib-2.0
+
 SOURCES = main.cpp \
           hiddtp_qpa.cpp \
           NyxInputControl.cpp \
@@ -54,6 +57,11 @@ webos {
 INCLUDEPATH += clipboards
 SOURCES += clipboards/qwebosclipboard.cpp
 HEADERS += clipboards/qwebosclipboard.h
+
+INCLUDEPATH += $$QT_BUILD_TREE/include
+INCLUDEPATH += $$QT_BUILD_TREE/include/QtOpenGL
+INCLUDEPATH += $$QT_BUILD_TREE/include/QtGui
+INCLUDEPATH += $$QT_BUILD_TREE/include/QtCore
 
 include($$QT_SOURCE_TREE/src/plugins/fontdatabases/basicunix/basicunix.pri)
 
