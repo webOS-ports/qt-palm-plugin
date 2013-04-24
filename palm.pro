@@ -1,11 +1,11 @@
 TARGET = qpalm
 TEMPLATE = lib
-CONFIG += plugin $$(WEBOS_CONFIG)
+CONFIG += plugin freetype
 
 QTDIR_build:DESTDIR = $$QT_BUILD_TREE/plugins/platforms
 
 CONFIG += link_pkgconfig
-PKGCONFIG += glib-2.0
+PKGCONFIG += glib-2.0 freetype2
 
 SOURCES = main.cpp \
           hiddtp_qpa.cpp \
@@ -31,7 +31,7 @@ qemu* {
 
     LIBS_PRIVATE += -lnyx
 } else {
-    QT += opengl
+    QT += opengles2
     SOURCES += qeglfsintegration.cpp \
                eglconvenience/qeglconvenience.cpp \
                eglconvenience/qeglplatformcontext.cpp \
@@ -61,7 +61,7 @@ INCLUDEPATH += $$QT_BUILD_TREE/include/QtOpenGL
 INCLUDEPATH += $$QT_BUILD_TREE/include/QtGui
 INCLUDEPATH += $$QT_BUILD_TREE/include/QtCore
 
-include($$QT_SOURCE_TREE/src/plugins/fontdatabases/basicunix/basicunix.pri)
+include($$QT_SOURCE_TREE/src/plugins/platforms/fontdatabases/basicunix/basicunix.pri)
 
 QMAKE_CXXFLAGS += $$QT_CFLAGS_GLIB
 LIBS_PRIVATE +=$$QT_LIBS_GLIB
